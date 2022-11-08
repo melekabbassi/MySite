@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MySiteDAL;
 
@@ -11,9 +12,11 @@ using MySiteDAL;
 namespace MySiteDAL.Migrations
 {
     [DbContext(typeof(MySiteContext))]
-    partial class MySiteContextModelSnapshot : ModelSnapshot
+    [Migration("20221108094539_Initial2")]
+    partial class Initial2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,18 +39,6 @@ namespace MySiteDAL.Migrations
                     b.HasKey("BlogId");
 
                     b.ToTable("Blogs");
-
-                    b.HasData(
-                        new
-                        {
-                            BlogId = 1,
-                            url = "http://blogs.packtpub.com/dotnet"
-                        },
-                        new
-                        {
-                            BlogId = 2,
-                            url = "http://blogs.packtpub.com/dotnetcore"
-                        });
                 });
 
             modelBuilder.Entity("MySiteBL.Entities.Comment", b =>
@@ -75,32 +66,6 @@ namespace MySiteDAL.Migrations
                     b.HasIndex("PostId");
 
                     b.ToTable("Comments");
-
-                    b.HasData(
-                        new
-                        {
-                            CommentId = 1,
-                            Author = "Packt",
-                            Content = "Dotnet 4.7 Released Contents",
-                            PostId = 1,
-                            Title = "Dotnet 4.7 Released"
-                        },
-                        new
-                        {
-                            CommentId = 2,
-                            Author = "Packt",
-                            Content = "Dotnet 4.8 Released Contents",
-                            PostId = 1,
-                            Title = "Dotnet 4.8 Released"
-                        },
-                        new
-                        {
-                            CommentId = 3,
-                            Author = "Packt",
-                            Content = "Dotnet 4.7 Released Contents",
-                            PostId = 2,
-                            Title = "Dotnet 4.7 Released"
-                        });
                 });
 
             modelBuilder.Entity("MySiteBL.Entities.Post", b =>
@@ -128,32 +93,6 @@ namespace MySiteDAL.Migrations
                     b.HasIndex("BlogId");
 
                     b.ToTable("Posts");
-
-                    b.HasData(
-                        new
-                        {
-                            PostId = 1,
-                            BlogId = 1,
-                            Content = "Dotnet 4.7 Released Contents",
-                            PublishedDateTime = new DateTime(2022, 11, 8, 11, 16, 10, 954, DateTimeKind.Local).AddTicks(9040),
-                            Title = "Dotnet 4.7 Released"
-                        },
-                        new
-                        {
-                            PostId = 2,
-                            BlogId = 1,
-                            Content = "Dotnet 4.8 Released Contents",
-                            PublishedDateTime = new DateTime(2022, 11, 8, 11, 16, 10, 954, DateTimeKind.Local).AddTicks(9075),
-                            Title = "Dotnet 4.8 Released"
-                        },
-                        new
-                        {
-                            PostId = 3,
-                            BlogId = 2,
-                            Content = "testContent",
-                            PublishedDateTime = new DateTime(2022, 11, 8, 11, 16, 10, 954, DateTimeKind.Local).AddTicks(9076),
-                            Title = "testTitle"
-                        });
                 });
 
             modelBuilder.Entity("MySiteBL.Entities.Comment", b =>

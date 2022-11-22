@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using MySiteDAL;
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,7 +9,11 @@ builder.Services.AddDbContext<MySiteContext>(
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 
+builder.Services.AddSingleton<IFileProvider>(new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/imageFiles")));
+
 var app = builder.Build();
+
+app.UseStaticFiles();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

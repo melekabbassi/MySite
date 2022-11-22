@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MySiteDAL;
 
@@ -11,9 +12,10 @@ using MySiteDAL;
 namespace MySiteDAL.Migrations
 {
     [DbContext(typeof(MySiteContext))]
-    partial class MySiteContextModelSnapshot : ModelSnapshot
+    [Migration("20221122085044_Initial6")]
+    partial class Initial6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,6 +31,9 @@ namespace MySiteDAL.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BlogId"), 1L, 1);
+
+                    b.Property<string>("ImageName")
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("url")
                         .HasColumnType("nvarchar(max)");
@@ -148,7 +153,7 @@ namespace MySiteDAL.Migrations
                             PostId = 1,
                             BlogId = 1,
                             Content = "Dotnet 4.7 Released Contents",
-                            PublishedDateTime = new DateTime(2022, 11, 22, 10, 12, 17, 528, DateTimeKind.Local).AddTicks(3881),
+                            PublishedDateTime = new DateTime(2022, 11, 22, 9, 50, 44, 650, DateTimeKind.Local).AddTicks(941),
                             Title = "Dotnet 4.7 Released"
                         },
                         new
@@ -156,7 +161,7 @@ namespace MySiteDAL.Migrations
                             PostId = 2,
                             BlogId = 1,
                             Content = "Dotnet 4.8 Released Contents",
-                            PublishedDateTime = new DateTime(2022, 11, 22, 10, 12, 17, 528, DateTimeKind.Local).AddTicks(3919),
+                            PublishedDateTime = new DateTime(2022, 11, 22, 9, 50, 44, 650, DateTimeKind.Local).AddTicks(989),
                             Title = "Dotnet 4.8 Released"
                         },
                         new
@@ -164,7 +169,7 @@ namespace MySiteDAL.Migrations
                             PostId = 3,
                             BlogId = 2,
                             Content = "testContent",
-                            PublishedDateTime = new DateTime(2022, 11, 22, 10, 12, 17, 528, DateTimeKind.Local).AddTicks(3921),
+                            PublishedDateTime = new DateTime(2022, 11, 22, 9, 50, 44, 650, DateTimeKind.Local).AddTicks(992),
                             Title = "testTitle"
                         });
                 });
